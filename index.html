@@ -138,38 +138,48 @@
       </div>
     </section>
 
-    <!-- PASSWORD SCREEN: ito ang nawawala sa original HTML -->
-    <section class="password-section hidden" id="passwordSection" aria-labelledby="passwordHeading">
-      <div class="surprise-card">
-        <p class="eyebrow">WAIT LANG, NAY ♡</p>
-        <div class="surprise-ornament">❦</div>
+    <!-- PASSWORD SCREEN -->
+<section class="password-section hidden" id="passwordSection" aria-labelledby="passwordHeading">
+  <div class="surprise-card">
+    <p class="eyebrow">WAIT LANG, NAY ♡</p>
 
-        <h2 id="passwordHeading">One little question...</h2>
+    <div class="surprise-ornament">❦</div>
 
-        <p>May secret muna bago ang last surprise. 🤍</p>
+    <h2 id="passwordHeading">One little question...</h2>
 
-        <form id="passwordForm">
-          <label for="passwordInput">Password</label>
+    <p>May secret muna bago ang last surprise. HAHAHAHA. 🤍</p>
 
-          <input
-            type="password"
-            id="passwordInput"
-            name="password"
-            placeholder="Enter the password..."
-            autocomplete="off"
-            required
-          >
+    <form id="passwordForm">
+      <label for="passwordInput">What is her name?</label>
 
-          <p id="passwordError" class="hidden" role="alert">
-            Ay, mali yata HAHAHAHA. Try again!
-          </p>
+      <p class="password-clue">
+        <em>Clue: A woman whose prayer became a testimony.</em>
+      </p>
 
-          <button class="primary-button" type="submit">
-            Unlock the surprise ♡
-          </button>
-        </form>
-      </div>
-    </section>
+      <input
+        type="password"
+        id="passwordInput"
+        name="password"
+        placeholder="Your answer..."
+        autocomplete="off"
+        required
+      >
+
+      <p id="passwordError" class="hidden" role="alert">
+        Hmm, try again, Nay. HAHAHAHA. 🤍
+      </p>
+
+      <p id="secondClue" class="password-clue hidden">
+        <em>Need another clue? Her name reads the same forward and backward. 👀</em>
+      </p>
+
+      <button class="primary-button" type="submit">
+        Unlock the surprise ♡
+      </button>
+    </form>
+  </div>
+</section>
+
 
     <section class="memories-section" id="memories">
       <div class="section-heading">
