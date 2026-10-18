@@ -303,3 +303,380 @@ h1 em, h2 em { color: var(--gold-light); font-weight: 400; }
   margin: 0;
 }
 
+
+/* =========================================
+   MONOCHROME BLACK THEME
+   Original photos remain in full color.
+   ========================================= */
+
+:root {
+  --ink: #eeece8;
+  --muted: #aaa7a2;
+
+  --bg: #101010;
+  --bg-deep: #080808;
+  --panel: #1b1b1b;
+  --panel-light: #292929;
+
+  --gold: #a9a9a9;
+  --gold-light: #e2e2e2;
+
+  --paper: #eeece6;
+  --paper-ink: #282828;
+  --paper-muted: #77736e;
+
+  --line: rgba(220, 220, 220, .22);
+
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --sans: "DM Sans", Arial, sans-serif;
+  --typewriter: "Special Elite", "Courier New", monospace;
+}
+
+/* PAGE BACKGROUND */
+body {
+  color: var(--ink);
+  background:
+    radial-gradient(
+      ellipse at 15% 10%,
+      rgba(255, 255, 255, .035),
+      transparent 38%
+    ),
+    radial-gradient(
+      ellipse at 90% 45%,
+      rgba(255, 255, 255, .025),
+      transparent 35%
+    ),
+    var(--bg);
+}
+
+/* HEADER */
+.topbar {
+  background: rgba(8, 8, 8, .82);
+  border-bottom-color: rgba(255, 255, 255, .10);
+}
+
+.brand,
+.brand:hover {
+  color: var(--gold-light);
+}
+
+.brand span {
+  color: var(--gold);
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline-color: var(--gold-light);
+}
+
+/* TEXT AND HEADINGS */
+.eyebrow {
+  color: var(--gold);
+}
+
+h1 em,
+h2 em {
+  color: var(--gold-light);
+}
+
+.hero-subtitle {
+  color: #c7c4bf;
+}
+
+.hero-rule::before,
+.hero-rule::after {
+  background: var(--line);
+}
+
+.hero-prompt,
+.click-hint,
+.section-intro {
+  color: var(--muted);
+}
+
+.envelope-caption {
+  color: var(--gold-light);
+}
+
+.click-hint span {
+  color: var(--gold-light);
+}
+
+/* ENVELOPE: BLACK AND CHARCOAL */
+.envelope-back {
+  background: #383838;
+}
+
+.letter-preview {
+  background: var(--paper);
+  color: var(--paper-ink);
+  border-color: #d0ceca;
+}
+
+.letter-preview-small {
+  color: #77736e;
+}
+
+.letter-preview-heart {
+  color: #777777;
+}
+
+.envelope-flap {
+  background: #5a5a5a;
+}
+
+.envelope-front {
+  background:
+    linear-gradient(
+      145deg,
+      transparent 49.5%,
+      #252525 50%
+    ) left / 50% 100% no-repeat,
+    linear-gradient(
+      215deg,
+      transparent 49.5%,
+      #414141 50%
+    ) right / 50% 100% no-repeat;
+}
+
+.wax-seal {
+  background: #181818;
+  color: #e5e5e5;
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, .25),
+    0 3px 8px #080808;
+}
+
+/* LETTER PAPER: KEEP THE IVORY CONTRAST */
+.letter-paper {
+  background:
+    radial-gradient(
+      ellipse at 0% 0%,
+      rgba(255, 255, 255, .45),
+      transparent 50%
+    ),
+    var(--paper);
+  color: var(--paper-ink);
+  border-color: #d0ceca;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, .45);
+}
+
+.letter-paper::before {
+  border-color: rgba(80, 80, 80, .20);
+}
+
+.paper-topline,
+.paper-bottomline {
+  color: var(--paper-muted);
+  border-color: rgba(80, 80, 80, .25);
+}
+
+.letter-content strong {
+  color: #454545;
+}
+
+/* BUTTONS */
+.primary-button {
+  background: #dedede;
+  color: #111111;
+  border-color: #dedede;
+}
+
+.primary-button:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+}
+
+.text-button {
+  color: #e0e0e0;
+  border-bottom-color: var(--line);
+}
+
+.text-button:hover {
+  border-color: #ffffff;
+}
+
+/* MEMORIES SECTION */
+.memories-section {
+  background: rgba(0, 0, 0, .25);
+  border-top-color: rgba(255, 255, 255, .08);
+  border-bottom-color: rgba(255, 255, 255, .08);
+}
+
+.memory-card {
+  background: #1b1b1b;
+  border-color: rgba(255, 255, 255, .12);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .3);
+}
+
+.photo-frame {
+  background: #151515;
+}
+
+/* IMPORTANT:
+   Photos retain their original colors.
+   No grayscale filter is applied. */
+.photo-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: none;
+}
+
+.photo-placeholder {
+  background: linear-gradient(145deg, #353535, #111111);
+  color: var(--gold-light);
+}
+
+.memory-number {
+  color: var(--gold);
+}
+
+.memory-tip {
+  color: #aaa7a2;
+}
+
+/* PASSWORD SCREEN */
+.password-section form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.password-section label {
+  color: #dedede;
+  font-size: .75rem;
+  letter-spacing: .14em;
+}
+
+.password-section input {
+  width: 100%;
+  max-width: 320px;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid rgba(220, 220, 220, .4);
+  border-radius: 6px;
+  background: #141414;
+  color: #f2f2f2;
+  font: inherit;
+  text-align: center;
+}
+
+.password-section input::placeholder {
+  color: #777777;
+}
+
+.password-section input:focus {
+  outline: 1px solid #d8d8d8;
+  outline-offset: 3px;
+}
+
+.password-clue {
+  color: #bcb8b2;
+  font: italic 1.05rem/1.6 var(--serif);
+  margin: 0;
+}
+
+.password-error {
+  color: #d0a5a5;
+  margin: 0;
+}
+
+/* SURPRISE SECTION */
+.surprise-section {
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(255, 255, 255, .045),
+      transparent 65%
+    );
+}
+
+.surprise-card {
+  background: rgba(20, 20, 20, .92);
+  border-color: var(--line);
+  box-shadow: 0 20px 65px rgba(0, 0, 0, .35);
+}
+
+.surprise-ornament {
+  color: var(--gold);
+}
+
+.surprise-card h2 {
+  color: var(--gold-light);
+}
+
+.surprise-message {
+  color: #dedbd6;
+}
+
+.surprise-signoff {
+  color: var(--gold-light);
+}
+
+.surprise-from {
+  color: var(--muted);
+}
+
+.surprise-full-name {
+  color: var(--muted);
+}
+
+/* TRASH THIS: KEEP THE PLAYFUL ENDING */
+.trash-button {
+  color: #c2b7b7;
+  border-bottom-color: rgba(220, 200, 200, .3);
+}
+
+.trash-button:hover {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.trash-reveal img {
+  border-color: rgba(255, 255, 255, .15);
+}
+
+.trash-reveal p {
+  color: #d5b8b8;
+}
+
+/* FOOTER, IF PRESENT */
+.footer {
+  color: var(--muted);
+}
+
+.footer-ornament,
+.footer p {
+  color: var(--gold-light);
+}
+
+/* TOAST */
+.toast {
+  background: #222222;
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+/* KEEP THE ORIGINAL MOBILE LAYOUT */
+@media (max-width: 760px) {
+  .memory-card:nth-child(2),
+  .memory-card:nth-child(3) {
+    margin-top: 0;
+  }
+}
+
+/* ACCESSIBILITY */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+}
+
