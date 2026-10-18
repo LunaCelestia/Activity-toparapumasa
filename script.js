@@ -7,6 +7,7 @@ const passwordSection = document.getElementById("passwordSection");
 const passwordForm = document.getElementById("passwordForm");
 const passwordInput = document.getElementById("passwordInput");
 const passwordError = document.getElementById("passwordError");
+const secondClue = document.getElementById("secondClue");
 
 const surpriseSection = document.getElementById("surpriseSection");
 const backToLetterButton = document.getElementById("backToLetter");
@@ -15,7 +16,8 @@ const trashReveal = document.getElementById("trashReveal");
 const undoTrashButton = document.getElementById("undoTrash");
 const endingActions = document.getElementById("endingActions");
 
-// Open the envelope
+
+// OPEN THE ENVELOPE
 openLetterButton.addEventListener("click", () => {
   const isOpen = openLetterButton.classList.contains("is-open");
 
@@ -25,6 +27,7 @@ openLetterButton.addEventListener("click", () => {
 
     window.setTimeout(() => {
       letterSection.classList.remove("hidden");
+
       letterSection.scrollIntoView({
         behavior: "smooth",
         block: "start"
@@ -32,6 +35,7 @@ openLetterButton.addEventListener("click", () => {
     }, 700);
   } else {
     letterSection.classList.remove("hidden");
+
     letterSection.scrollIntoView({
       behavior: "smooth",
       block: "start"
@@ -39,9 +43,11 @@ openLetterButton.addEventListener("click", () => {
   }
 });
 
-// One last thing opens the password screen
+
+// OPEN THE PASSWORD SCREEN
 showSurpriseButton.addEventListener("click", () => {
   passwordSection.classList.remove("hidden");
+
   passwordSection.scrollIntoView({
     behavior: "smooth",
     block: "start"
@@ -50,31 +56,37 @@ showSurpriseButton.addEventListener("click", () => {
   passwordInput.focus();
 });
 
-// Check the password
+
+// CHECK THE PASSWORD
 passwordForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const password = passwordInput.value.trim();
 
-  if (password === "Hannah") {
+  if (password.toLowerCase() === "hannah") {
     passwordError.classList.add("hidden");
+    secondClue.classList.add("hidden");
+
     passwordSection.classList.add("hidden");
     surpriseSection.classList.remove("hidden");
+
+    passwordInput.value = "";
 
     surpriseSection.scrollIntoView({
       behavior: "smooth",
       block: "start"
     });
-
-    passwordInput.value = "";
   } else {
     passwordError.classList.remove("hidden");
+    secondClue.classList.remove("hidden");
+
     passwordInput.value = "";
     passwordInput.focus();
   }
 });
 
-// Return to the letter
+
+// RETURN TO THE LETTER
 backToLetterButton.addEventListener("click", () => {
   letterSection.scrollIntoView({
     behavior: "smooth",
@@ -82,7 +94,8 @@ backToLetterButton.addEventListener("click", () => {
   });
 });
 
-// Trash the surprise
+
+// TRASH THE SURPRISE
 trashThisButton.addEventListener("click", () => {
   endingActions.classList.add("hidden");
   trashReveal.classList.remove("hidden");
@@ -93,7 +106,8 @@ trashThisButton.addEventListener("click", () => {
   });
 });
 
-// Undo trash
+
+// UNDO TRASH
 undoTrashButton.addEventListener("click", () => {
   trashReveal.classList.add("hidden");
   endingActions.classList.remove("hidden");
