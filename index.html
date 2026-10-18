@@ -33,7 +33,9 @@
 
         <h1>For the woman<br>who <em>pours into</em> others.</h1>
 
-        <p class="hero-subtitle">You spend so much time pouring into others. I hope you remember that you deserve to be poured into, too.</p>
+        <p class="hero-subtitle">
+          You spend so much time pouring into others. I hope you remember that you deserve to be poured into, too.
+        </p>
 
         <div class="hero-rule"><span>❦</span></div>
 
@@ -47,7 +49,7 @@
           <span class="envelope-back"></span>
 
           <span class="letter-preview">
-            <span class="letter-preview-small"> For you lidir.</span>
+            <span class="letter-preview-small">For you lidir.</span>
             <span class="letter-preview-name">Nay</span>
             <span class="letter-preview-heart">♡</span>
           </span>
@@ -136,6 +138,39 @@
       </div>
     </section>
 
+    <!-- PASSWORD SCREEN: ito ang nawawala sa original HTML -->
+    <section class="password-section hidden" id="passwordSection" aria-labelledby="passwordHeading">
+      <div class="surprise-card">
+        <p class="eyebrow">WAIT LANG, NAY ♡</p>
+        <div class="surprise-ornament">❦</div>
+
+        <h2 id="passwordHeading">One little question...</h2>
+
+        <p>May secret muna bago ang last surprise. 🤍</p>
+
+        <form id="passwordForm">
+          <label for="passwordInput">Password</label>
+
+          <input
+            type="password"
+            id="passwordInput"
+            name="password"
+            placeholder="Enter the password..."
+            autocomplete="off"
+            required
+          >
+
+          <p id="passwordError" class="hidden" role="alert">
+            Ay, mali yata HAHAHAHA. Try again!
+          </p>
+
+          <button class="primary-button" type="submit">
+            Unlock the surprise ♡
+          </button>
+        </form>
+      </div>
+    </section>
+
     <section class="memories-section" id="memories">
       <div class="section-heading">
         <p class="eyebrow">LITTLE MOMENTS, BIG MEANING</p>
@@ -180,30 +215,29 @@
 
     <section class="surprise-section hidden" id="surpriseSection">
       <div class="surprise-card">
-        
-<p class="eyebrow">A LITTLE SOMETHING FROM THE GANG</p>
+        <p class="eyebrow">A LITTLE SOMETHING FROM THE GANG</p>
 
-<div class="surprise-ornament">❦</div>
+        <div class="surprise-ornament">❦</div>
 
-<h2>Dear Maem, <span class="surprise-full-name">V!</span></h2>
+        <h2>Dear Maem, <span class="surprise-full-name">V!</span></h2>
 
-<div class="surprise-message">
-  <p class="eyebrow">TIN</p>
-  <p>Salamat sa iyong suporta, God bless.</p>
-</div>
+        <div class="surprise-message">
+          <p class="eyebrow">TIN</p>
+          <p>Salamat sa iyong suporta, God bless.</p>
+        </div>
 
-<div class="surprise-message">
-  <p class="eyebrow">YELA</p>
-  <p>Pilipino, Pilipino, bebot, bebot be, ikaw ay aking…</p>
-</div>
+        <div class="surprise-message">
+          <p class="eyebrow">YELA</p>
+          <p>Pilipino, Pilipino, bebot, bebot be, ikaw ay aking…</p>
+        </div>
 
-<div class="surprise-message">
-  <p class="eyebrow">RUTH</p>
-  <p>Meron din palang ganda ang buhay, pwede nang mangarap.</p>
-</div>
+        <div class="surprise-message">
+          <p class="eyebrow">RUTH</p>
+          <p>Meron din palang ganda ang buhay, pwede nang mangarap.</p>
+        </div>
 
-<p class="surprise-signoff"> Arigathanks, Maem. 🤍</p>
-<p class="surprise-from">— Mga mababangis</p>
+        <p class="surprise-signoff">Arigathanks, Maem. 🤍</p>
+        <p class="surprise-from">— Mga mababangis</p>
 
         <div class="ending-actions" id="endingActions">
           <button class="text-button" id="backToLetter" type="button">
