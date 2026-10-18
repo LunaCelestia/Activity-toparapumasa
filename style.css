@@ -269,4 +269,37 @@ h1 em, h2 em { color: var(--gold-light); font-weight: 400; }
 @keyframes reveal-pop { from { opacity: 0; transform: scale(.94) translateY(8px); } to { opacity: 1; transform: scale(1) translateY(0); } }
 
 /* Personal touches for Nay */
-.surprise-full-name { display: block; font-size: .36em; font-weight: 400; font-style: italic; margin-top: 8px; color: var(--muted); }
+.surprise-full-name { display: block; font-size: .36em; font-weight: 400; font-style: italic; margin-top: 8px; color: var(--muted); } 
+
+
+.password-section form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.password-section label {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+}
+
+.password-section input {
+  width: 100%;
+  max-width: 320px;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid rgba(194, 158, 100, 0.65);
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: center;
+}
+
+.password-error {
+  color: #c87979;
+  margin: 0;
+}
+
