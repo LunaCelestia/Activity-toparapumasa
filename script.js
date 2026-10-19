@@ -15,6 +15,93 @@ const trashThisButton = document.getElementById("trashThis");
 const trashReveal = document.getElementById("trashReveal");
 const undoTrashButton = document.getElementById("undoTrash");
 
+// LETTER REVEAL ELEMENTS
+const letterContent = document.querySelector("#letterSection .letter-content");
+const continueWrap = document.querySelector("#letterSection .continue-wrap");
+const letterParagraphs = Array.from(
+  letterContent.querySelectorAll(":scope > p")
+);
+
+let revealedCount = 1;
+
+// Create the Continue Reading controls automatically.
+const revealControls = document.createElement("div");
+revealControls.className = "letter-reveal-controls";
+
+const revealHint = document.createElement("p");
+revealHint.className = "letter-reveal-hint";
+revealHint.textContent = "One paragraph at a time. ♡";
+
+const revealNextButton = document.createElement("button");
+revealNextButton.className = "primary-button";
+revealNextButton.id = "revealNext";
+revealNextButton.type = "button";
+revealNextButton.textContent = "Continue reading →";
+
+revealControls.append(revealHint, revealNextButton);
+letterContent.insertAdjacentElement("afterend", revealControls);
+
+// Set up the first paragraph.
+function resetLetterReveal() {
+  revealedCount = 1;
+
+  letterParagraphs.forEach((paragraph, index) => {
+    paragraph.classList.remove("reveal-in");
+    paragraph.classList.toggle("reveal-hidden", index > 0);
+  });
+
+  revealControls.classList.remove("hidden");
+  revealNextButton.textContent = "Continue reading →";
+  revealHint.textContent = "One paragraph at a time. ♡";
+
+  continueWrap.classList.add("hidden");
+}
+
+// Reveal the next two paragraphs per click.
+// This keeps the long letter from requiring too many clicks.
+revealNextButton.addEventListener("click", () => {
+  const previousCount = revealedCount;
+  const nextCount = Math.min(
+    revealedCount + 2,
+    letterParagraphs.length
+  );
+
+  for (let i = previousCount; i < nextCount; i++) {
+    const paragraph = letterParagraphs[i];
+
+    paragraph.classList.remove("reveal-hidden");
+    paragraph.classList.remove("reveal-in");
+
+    // Restart the animation when the paragraph becomes visible.
+    void paragraph.offsetWidth;
+
+    paragraph.classList.add("reveal-in");
+  }
+
+  revealedCount = nextCount;
+
+  if (revealedCount >= letterParagraphs.length) {
+    revealControls.classList.add("hidden");
+    continueWrap.classList.remove("hidden");
+
+    continueWrap.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+  } else {
+    revealHint.textContent =
+      "A little more of the letter... ♡";
+
+    letterParagraphs[revealedCount - 1].scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+  }
+});
+
+// Initialize the letter before opening it.
+resetLetterReveal();
+
 // OPEN THE ENVELOPE
 openLetterButton.addEventListener("click", () => {
   openLetterButton.classList.add("is-open");
@@ -70,12 +157,14 @@ passwordForm.addEventListener("submit", (event) => {
   }
 });
 
-// READ AGAIN: RETURN TO THE MAIN LETTER
+// READ AGAIN: RETURN TO THE START OF THE LETTER
 readAgainButton.addEventListener("click", () => {
   trashReveal.classList.add("hidden");
   surpriseSection.classList.add("hidden");
   passwordSection.classList.add("hidden");
   letterSection.classList.remove("hidden");
+
+  resetLetterReveal();
 
   letterSection.scrollIntoView({
     behavior: "smooth",
