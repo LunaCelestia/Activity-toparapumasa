@@ -495,6 +495,7 @@ h2 em {
   transform: translateY(0);
 }
 
+
 /* LETTER ENDING AND LAST BUTTON */
 .continue-wrap {
   padding-top: 40px;
@@ -507,10 +508,12 @@ h2 em {
   font: italic 1.2rem var(--serif);
 }
 
-/* The wrapper controls the reveal; the button is never hidden separately. */
+/* Smooth reveal of the final letter button */
 #letterEnding {
   position: relative;
   margin-top: 1rem;
+  margin-bottom: 48px;
+  padding-bottom: 8px;
   opacity: 0;
   transform: translateY(12px);
   transition: opacity .8s ease, transform .8s ease;
@@ -527,7 +530,8 @@ h2 em {
 
 #oneLastThing {
   display: block;
-  margin: 18px auto 0;
+  margin: 22px auto 0;
+  padding-bottom: 12px;
   text-align: center;
   opacity: 1;
   visibility: visible;
