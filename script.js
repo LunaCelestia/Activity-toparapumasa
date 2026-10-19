@@ -147,6 +147,7 @@ function revealFinalButton() {
   if (!oneLastThing) return;
 
   oneLastThing.classList.remove("hidden");
+  oneLastThing.style.display = "block";
 
   requestAnimationFrame(() => {
     oneLastThing.classList.add("last-thing-visible");
