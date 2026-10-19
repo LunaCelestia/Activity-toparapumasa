@@ -1,7 +1,6 @@
 
 const openLetterButton = document.getElementById("openLetter");
 const letterSection = document.getElementById("letterSection");
-const showSurpriseButton = document.getElementById("showSurprise");
 
 const passwordSection = document.getElementById("passwordSection");
 const passwordForm = document.getElementById("passwordForm");
@@ -15,26 +14,29 @@ const trashThisButton = document.getElementById("trashThis");
 const trashReveal = document.getElementById("trashReveal");
 const undoTrashButton = document.getElementById("undoTrash");
 
-const oneLastThing = document.getElementById("oneLastThing");
-const showLastThing = document.getElementById("showLastThing");
-
-// =========================================
-// LETTER TEASER + 10-SECOND AUTOMATIC REVEAL
-// =========================================
-
 const letterContent = document.querySelector(
   "#letterSection .letter-content"
 );
 
+const letterEnding = document.getElementById("letterEnding");
+const showLastThing = document.getElementById("showLastThing");
+
 let letterRevealTimer = null;
+let endingTimer = null;
+
 let fullLetterRevealed = false;
+let endingAlreadyShown = false;
+
 let letterObserver = null;
 let finalLetterObserver = null;
 
 let teaser = null;
 let realLetter = null;
 
-// Create the teaser and preserve the original letter.
+// =========================================
+// CREATE THE LETTER TEASER
+// =========================================
+
 if (letterContent) {
   teaser = document.createElement("div");
   teaser.id = "fakeLetter";
@@ -52,6 +54,7 @@ if (letterContent) {
   realLetter.id = "realLetter";
   realLetter.className = "hidden";
 
+  // Move the original letter into its wrapper.
   while (letterContent.firstChild) {
     realLetter.appendChild(letterContent.firstChild);
   }
@@ -60,7 +63,7 @@ if (letterContent) {
 }
 
 // =========================================
-// REVEAL LETTER PARAGRAPHS WHILE SCROLLING
+// REVEAL LETTER PARAGRAPHS ON SCROLL
 // =========================================
 
 function startScrollReveal() {
@@ -102,23 +105,28 @@ function startScrollReveal() {
 }
 
 // =========================================
-// SHOW "ONE LAST THING" AT THE END
+// HIDE THE LETTER ENDING INITIALLY
+// =========================================
+
+if (letterEnding) {
+  letterEnding.classList.add("hidden");
+  letterEnding.classList.remove("last-thing-visible");
+}
+
+// =========================================
+// WAIT UNTIL THE LAST PARAGRAPH
 // =========================================
 
 function setupFinalLetterSurprise() {
-  if (!realLetter || !oneLastThing) return;
+  if (!realLetter || !letterEnding || endingAlreadyShown) return;
 
-  // Find the last paragraph of the real letter.
   const paragraphs = realLetter.querySelectorAll(":scope > p");
   const lastParagraph = paragraphs[paragraphs.length - 1];
 
-  if (!lastParagraph) {
-    revealFinalButton();
-    return;
-  }
+  if (!lastParagraph) return;
 
   if (!("IntersectionObserver" in window)) {
-    revealFinalButton();
+    scheduleLetterEnding();
     return;
   }
 
@@ -130,32 +138,45 @@ function setupFinalLetterSurprise() {
     (entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          revealFinalButton();
           observer.disconnect();
+
+          // Start the extra 10-second wait.
+          scheduleLetterEnding();
         }
       });
     },
     {
-      threshold: 0.5
+      threshold: 0.1
     }
   );
 
   finalLetterObserver.observe(lastParagraph);
 }
 
-function revealFinalButton() {
-  if (!oneLastThing) return;
+// =========================================
+// SHOW BOTH ENDING MESSAGES AFTER 10 SECONDS
+// =========================================
 
-  oneLastThing.classList.remove("hidden");
-  oneLastThing.style.display = "block";
+function scheduleLetterEnding() {
+  if (endingTimer !== null || endingAlreadyShown) return;
 
-  requestAnimationFrame(() => {
-    oneLastThing.classList.add("last-thing-visible");
-  });
+  endingTimer = window.setTimeout(() => {
+    endingAlreadyShown = true;
+
+    if (letterEnding) {
+      letterEnding.classList.remove("hidden");
+
+      requestAnimationFrame(() => {
+        letterEnding.classList.add("last-thing-visible");
+      });
+    }
+
+    endingTimer = null;
+  }, 10000);
 }
 
 // =========================================
-// START THE 10-SECOND COUNTDOWN
+// REVEAL THE REAL LETTER AFTER 10 SECONDS
 // =========================================
 
 function startLetterCountdown() {
@@ -227,8 +248,12 @@ function openPasswordScreen() {
   }
 }
 
-if (showSurpriseButton) {
-  showSurpriseButton.addEventListener("click", openPasswordScreen);
+// =========================================
+// CLICK "ONE LAST THING"
+// =========================================
+
+if (showLastThing) {
+  showLastThing.addEventListener("click", openPasswordScreen);
 }
 
 // =========================================
@@ -265,7 +290,7 @@ if (passwordForm) {
 }
 
 // =========================================
-// READ AGAIN: RETURN TO THE LETTER
+// READ AGAIN
 // =========================================
 
 if (readAgainButton) {
@@ -273,6 +298,7 @@ if (readAgainButton) {
     trashReveal.classList.add("hidden");
     surpriseSection.classList.add("hidden");
     passwordSection.classList.add("hidden");
+
     letterSection.classList.remove("hidden");
 
     letterSection.scrollIntoView({
@@ -283,7 +309,7 @@ if (readAgainButton) {
 }
 
 // =========================================
-// TRASH THIS: SHOW THE JOKE
+// TRASH THIS
 // =========================================
 
 if (trashThisButton) {
@@ -298,7 +324,7 @@ if (trashThisButton) {
 }
 
 // =========================================
-// UNDO TRASH: HIDE THE JOKE
+// UNDO TRASH
 // =========================================
 
 if (undoTrashButton) {
@@ -310,12 +336,4 @@ if (undoTrashButton) {
       block: "center"
     });
   });
-}
-
-// =========================================
-// "ONE LAST THING" CLICK ACTION
-// =========================================
-
-if (showLastThing) {
-  showLastThing.addEventListener("click", openPasswordScreen);
 }
