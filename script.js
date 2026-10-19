@@ -10,39 +10,25 @@ const passwordError = document.getElementById("passwordError");
 const secondClue = document.getElementById("secondClue");
 
 const surpriseSection = document.getElementById("surpriseSection");
-const backToLetterButton = document.getElementById("backToLetter");
+const readAgainButton = document.getElementById("readAgain");
 const trashThisButton = document.getElementById("trashThis");
 const trashReveal = document.getElementById("trashReveal");
 const undoTrashButton = document.getElementById("undoTrash");
-const endingActions = document.getElementById("endingActions");
-
 
 // OPEN THE ENVELOPE
 openLetterButton.addEventListener("click", () => {
-  const isOpen = openLetterButton.classList.contains("is-open");
+  openLetterButton.classList.add("is-open");
+  openLetterButton.setAttribute("aria-label", "Letter opened");
 
-  if (!isOpen) {
-    openLetterButton.classList.add("is-open");
-    openLetterButton.setAttribute("aria-label", "Letter opened");
+  letterSection.classList.remove("hidden");
 
-    window.setTimeout(() => {
-      letterSection.classList.remove("hidden");
-
-      letterSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }, 700);
-  } else {
-    letterSection.classList.remove("hidden");
-
+  window.setTimeout(() => {
     letterSection.scrollIntoView({
       behavior: "smooth",
       block: "start"
     });
-  }
+  }, 300);
 });
-
 
 // OPEN THE PASSWORD SCREEN
 showSurpriseButton.addEventListener("click", () => {
@@ -56,7 +42,6 @@ showSurpriseButton.addEventListener("click", () => {
   passwordInput.focus();
 });
 
-
 // CHECK THE PASSWORD
 passwordForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -66,9 +51,9 @@ passwordForm.addEventListener("submit", (event) => {
   if (password.toLowerCase() === "hannah") {
     passwordError.classList.add("hidden");
     secondClue.classList.add("hidden");
-
     passwordSection.classList.add("hidden");
     surpriseSection.classList.remove("hidden");
+    trashReveal.classList.add("hidden");
 
     passwordInput.value = "";
 
@@ -85,19 +70,21 @@ passwordForm.addEventListener("submit", (event) => {
   }
 });
 
+// READ AGAIN: RETURN TO THE MAIN LETTER
+readAgainButton.addEventListener("click", () => {
+  trashReveal.classList.add("hidden");
+  surpriseSection.classList.add("hidden");
+  passwordSection.classList.add("hidden");
+  letterSection.classList.remove("hidden");
 
-// RETURN TO THE LETTER
-backToLetterButton.addEventListener("click", () => {
   letterSection.scrollIntoView({
     behavior: "smooth",
     block: "start"
   });
 });
 
-
-// TRASH THE SURPRISE
+// TRASH THIS: SHOW THE JOKE
 trashThisButton.addEventListener("click", () => {
-  endingActions.classList.add("hidden");
   trashReveal.classList.remove("hidden");
 
   trashReveal.scrollIntoView({
@@ -106,13 +93,11 @@ trashThisButton.addEventListener("click", () => {
   });
 });
 
-
-// UNDO TRASH
+// UNDO TRASH: HIDE THE JOKE
 undoTrashButton.addEventListener("click", () => {
   trashReveal.classList.add("hidden");
-  endingActions.classList.remove("hidden");
 
-  endingActions.scrollIntoView({
+  surpriseSection.scrollIntoView({
     behavior: "smooth",
     block: "center"
   });
