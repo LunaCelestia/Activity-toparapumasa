@@ -835,4 +835,63 @@ h2 em {
   .gang-actions {
     gap: 20px;
   }
+} 
+
+
+/* GANG SURPRISE CARD */
+#surpriseSection .gang-letter {
+  width: 100%;
+  max-width: 690px;
+  margin: 0 auto;
+  padding: clamp(28px, 6vw, 60px);
+  box-sizing: border-box;
+
+  background: #171717;
+  border: 1px solid rgba(220, 220, 220, 0.25);
+  box-shadow: 0 20px 65px rgba(0, 0, 0, 0.4);
+
+  text-align: center;
 }
+
+/* MAKE SURE THE TRASH JOKE IS CENTERED */
+#surpriseSection .trash-reveal {
+  max-width: 420px;
+  margin: 30px auto 0;
+  text-align: center;
+}
+
+#surpriseSection .trash-reveal img {
+  display: block;
+  width: 100%;
+  max-height: 360px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+/* BUTTON COLORS */
+#surpriseSection .gang-actions .read-again-button {
+  color: #82b58a;
+  border-bottom-color: rgba(130, 181, 138, 0.5);
+}
+
+#surpriseSection .gang-actions .read-again-button:hover {
+  color: #b1dbb7;
+  border-bottom-color: #b1dbb7;
+}
+
+#surpriseSection .gang-actions .trash-button {
+  color: #d98282;
+  border-bottom-color: rgba(217, 130, 130, 0.5);
+}
+
+#surpriseSection .gang-actions .trash-button:hover {
+  color: #ffaaaa;
+  border-bottom-color: #ffaaaa;
+}
+
+@media (max-width: 480px) {
+  #surpriseSection .gang-letter {
+    padding: 28px 20px;
+  }
+}
+
