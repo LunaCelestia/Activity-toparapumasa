@@ -57,12 +57,12 @@ function resetLetterReveal() {
   continueWrap.classList.add("hidden");
 }
 
-// Reveal the next two paragraphs per click.
-// This keeps the long letter from requiring too many clicks.
+
+ // Reveal the next six paragraphs per click.
 revealNextButton.addEventListener("click", () => {
   const previousCount = revealedCount;
   const nextCount = Math.min(
-    revealedCount + 2,
+    revealedCount + 6,
     letterParagraphs.length
   );
 
@@ -79,6 +79,9 @@ revealNextButton.addEventListener("click", () => {
   }
 
   revealedCount = nextCount;
+
+  // Keep the progress indicator updated.
+  updateReadingProgress();
 
   if (revealedCount >= letterParagraphs.length) {
     revealControls.classList.add("hidden");
@@ -98,6 +101,7 @@ revealNextButton.addEventListener("click", () => {
     });
   }
 });
+
 
 // Initialize the letter before opening it.
 resetLetterReveal();
