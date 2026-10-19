@@ -895,3 +895,49 @@ h2 em {
   }
 }
 
+
+/* LETTER: PARAGRAPH-BY-PARAGRAPH REVEAL */
+.letter-content p.reveal-hidden {
+  display: none !important;
+}
+
+.letter-content p.reveal-in {
+  animation: paragraphReveal 0.65s ease both;
+}
+
+@keyframes paragraphReveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.letter-reveal-controls {
+  text-align: center;
+  margin: 28px auto 12px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(130, 115, 95, 0.3);
+}
+
+.letter-reveal-hint {
+  font-size: 0.85rem;
+  font-style: italic;
+  opacity: 0.7;
+  margin-bottom: 14px;
+}
+
+#revealNext {
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .letter-content p.reveal-in {
+    animation: none;
+  }
+}
+
