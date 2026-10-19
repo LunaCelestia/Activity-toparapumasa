@@ -964,4 +964,84 @@ h2 em {
     transform: none;
     transition: none;
   }
+} 
+
+
+/* =========================================
+   NAY'S LETTER: TEASER + AUTOMATIC REVEAL
+   ========================================= */
+
+/* The first message shown when the envelope opens */
+.letter-teaser {
+  position: relative;
+  min-height: 180px;
+  padding: 35px 0;
+  font: 1.2rem/1.85 var(--serif);
+  color: var(--paper-ink);
+  transition: opacity 0.45s ease, transform 0.45s ease;
 }
+
+.letter-teaser p {
+  margin: 0 0 22px;
+}
+
+.letter-teaser p:first-child {
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+.letter-teaser p:last-child {
+  font-style: italic;
+}
+
+/* Fade the teaser away after 10 seconds */
+.letter-teaser.teaser-fading {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+/* The full letter fades in once the teaser disappears */
+#realLetter.letter-fading-in {
+  animation: realLetterFadeIn 0.65s ease both;
+}
+
+@keyframes realLetterFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Paragraphs start hidden and appear as the reader scrolls */
+#letterSection .letter-content #realLetter > p {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+/* Revealed paragraphs stay visible */
+#letterSection .letter-content #realLetter > p.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect reduced-motion settings */
+@media (prefers-reduced-motion: reduce) {
+  .letter-teaser,
+  #realLetter.letter-fading-in,
+  #letterSection .letter-content #realLetter > p {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  #letterSection .letter-content #realLetter > p {
+    opacity: 1;
+    transform: none;
+  }
+}
+
