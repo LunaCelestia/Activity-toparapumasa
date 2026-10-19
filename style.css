@@ -941,3 +941,27 @@ h2 em {
   }
 }
 
+
+/* AUTOMATIC LETTER REVEAL ON SCROLL */
+
+#letterSection .letter-content > p {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+#letterSection .letter-content > p.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  #letterSection .letter-content > p {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
