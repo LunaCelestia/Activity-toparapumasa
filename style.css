@@ -1087,8 +1087,32 @@ h2 em {
   display: none !important;
 }
 
+
 #oneLastThing.last-thing-visible {
   display: block !important;
   opacity: 1;
   transform: translateY(0);
+}
+
+
+/* Keep the letter ending hidden until its timer finishes */
+#letterEnding.hidden {
+  display: none !important;
+}
+
+#letterEnding {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#letterEnding.last-thing-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #letterEnding {
+    transition: none;
+  }
 }
