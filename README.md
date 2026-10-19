@@ -1,4 +1,4 @@
-# A Letter for Nay — beginner website project
+# A Letter for V.P.L. — beginner website project
 
 A responsive dark-academia appreciation-letter website made with plain HTML, CSS, and JavaScript. The three photos you shared are included, and background music has been removed.
 
