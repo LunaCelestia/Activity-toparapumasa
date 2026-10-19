@@ -1045,3 +1045,40 @@ h2 em {
   }
 }
 
+
+/* The final little surprise */
+#oneLastThing {
+  text-align: center;
+  margin: 3rem auto 1rem;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#oneLastThing.last-thing-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#showLastThing {
+  font: inherit;
+  cursor: pointer;
+  padding: 0.9rem 1.5rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+#showLastThing:hover {
+  transform: translateY(-3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #oneLastThing,
+  #showLastThing {
+    transition: none;
+  }
+}
+
