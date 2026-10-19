@@ -1082,3 +1082,13 @@ h2 em {
   }
 }
 
+/* Keep the final surprise completely hidden until triggered */
+#oneLastThing[style*="display: none"] {
+  display: none !important;
+}
+
+#oneLastThing.last-thing-visible {
+  display: block !important;
+  opacity: 1;
+  transform: translateY(0);
+}
